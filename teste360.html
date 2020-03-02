@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/img/ico/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" href="assets/img/ico/apple-touch-icon-57x57.png">
+    <title>Piper by Distinctive Themes</title>
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+
+    <script src="assets/360gallery-gh-pages/components/set-image.js"></script>
+    <script src="assets/360gallery-gh-pages/components/update-raycaster.js"></script>
+    <!-- DELETE SECTION BELOW if you forked code. This is analytics code to track popularity of content for a
+         meetup event tracking. -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-73311422-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/plugins.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/pe-icons.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+   
+       
+        <!-- Navigation -->
+      
+
+                 
+                    <a-scene>
+                        <a-assets>
+                            <img id="kieran" src="assets/img/360_0073.jpg">
+                            <img id="kieran-thumb" crossorigin="anonymous" src="assets/img/kieran-thumb.png">
+                            <img id="christian-thumb" crossorigin="anonymous" src="assets/img/christian-thumb.png">
+                            <img id="eddie-thumb" crossorigin="anonymous" src="assets/img/eddie-thumb.png">
+                            <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+                            <img id="christian" crossorigin="anonymous" src="assets/img/360_0087.jpg">
+                            <img id="eddie" crossorigin="anonymous" src="assets/img/360_0272.jpg">
+                            <!-- Image link template to be reused. -->
+                            <script id="link" type="text/nunjucks">
+                                <a-plane class="link" height="1" width="1"
+                                         material="shader: flat; src: {{ thumb }}"
+                                         event-set__1="_event: mousedown; scale: 1 1 1"
+                                         event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                                         event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                                         event-set__4="_event: mouseleave; scale: 1 1 1"
+                                         set-image="on: click; target: #image-360; src: {{ src }}"
+                                         sound="on: click; src: #click-sound"
+                                         update-raycaster="#cursor"></a-plane>
+                            </script>
+                        </a-assets>
+                        <!-- 360-degree image. -->
+                        <a-sky id="image-360" radius="10" src="#kieran"></a-sky>
+                        <!-- Image links. -->
+                        <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+                            <a-entity template="src: #link" data-src="#christian" data-thumb="#christian-thumb"></a-entity>
+                            <a-entity template="src: #link" data-src="#kieran" data-thumb="#kieran-thumb"></a-entity>
+                            <a-entity template="src: #link" data-src="#eddie" data-thumb="#eddie-thumb"></a-entity>
+                        </a-entity>
+                        <!-- Camera + cursor. -->
+                        <a-entity camera look-controls>
+                            <a-cursor id="cursor"
+                                      animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                                      animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                                      event-set__1="_event: mouseenter; color: springgreen"
+                                      event-set__2="_event: mouseleave; color: black"
+                                      raycaster="objects: .link"></a-cursor>
+                        </a-entity>
+                    </a-scene>
+               
+          
+
+     
+
+
+    
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/init.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</body>
+
+</html>

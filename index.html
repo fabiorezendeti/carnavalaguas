@@ -1,0 +1,864 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link href="assets/css/imagens.css" rel="stylesheet" />
+    <link href="assets/unitegallery-master/package/unitegallery/css/unite-gallery.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="assets/img/ico/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" href="assets/img/ico/apple-touch-icon-57x57.png">
+    <link href="assets/css/tooltip.css" rel="stylesheet" />
+    <title>Carnaval das Àguas</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/plugins.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/pe-icons.css" rel="stylesheet">
+
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+
+    <script src="assets/360gallery-gh-pages/components/set-image.js"></script>
+    <script src="assets/360gallery-gh-pages/components/update-raycaster.js"></script>
+    <!-- DELETE SECTION BELOW if you forked code. This is analytics code to track popularity of content for a
+         meetup event tracking. -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-73311422-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+   
+    <style type="text/css">
+        .zoom {
+            overflow: hidden;
+        }
+
+            .zoom img {
+                max-width: 100%;
+                -moz-transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+            }
+
+            .zoom:hover img {
+                -moz-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+
+        .text-item {
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            bottom: 20px;
+            z-index: 10;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+    </style>
+
+    <style type="text/css">
+        .intrinsic-box {
+            position: relative;
+            height: 0;
+            width: 50%;
+            padding-top: 56.25%;
+        }
+
+        a-scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body id="page-top" class="animated-navigation" style="background-image:url(assets/img/bg/fundoNovo.jpg);height:7068px;">
+
+    <div class="master-wrapper">
+ <img src="assets/img/topo.png" style="position:center;padding-left:200px"/>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top fadeInDown" data-wow-delay="0.2s">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div id="navbar-social">
+
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" data-hover="dropdown">Home</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#videos" class="page-scroll wow fadeInDown" data-hover="dropdown">Videos</a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#imagens" class="page-scroll wow fadeInDown" data-hover="dropdown">Imagens</a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#pinturas" class="page-scroll wow fadeInDown" data-hover="dropdown">Pinturas</a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#podcast" class="page-scroll wow fadeInDown" data-hover="dropdown">Podcast</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#virtual" class="page-scroll wow fadeInDown" data-hover="dropdown">Tour Virtual</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#sobre" class="page-scroll wow fadeInDown" data-hover="dropdown">Sobre</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#contatos" class="page-scroll wow fadeInDown" data-hover="dropdown">Contato</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#links" class="page-scroll wow fadeInDown" data-hover="dropdown">Links</a>
+
+                        </li>
+
+                        <li id="menu-trigger-wrapper">
+                            <div class="pull-right">
+                                <button type="button" id="menu-toggle" class="tcon" aria-label="toggle menu">
+                                    <span class="tcon-menu__lines" aria-hidden="true"></span>
+                                    <span class="tcon-visuallyhidden">toggle menu</span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!-- Header -->
+        <header id="headerwrap" class="backstretched light-backstretch fullheight single-page-section">
+
+
+            <div class="zoom" style="height:100px;top:auto;padding-left:800px">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img src="assets/img/bg/macaco.png" height="80" top="10" style="left:800px" />
+                </a>
+            </div>
+            <div class="zoom" style="height:100px;top:100px;padding-right:600px">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img src="assets/img/bg/masc1.png" height="80" top="10" style="right:200px" />
+                </a>
+            </div>
+
+            <div class="zoom" style="height:100px;top:200px;">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img src="assets/img/bg/masc2.png" height="80" top="10" style="right:300px" />
+                </a>
+            </div>
+
+            <div class="zoom" style="height:100px;top:400px;">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img src="assets/img/bg/picapau.png" height="80" top="10" style="right:100px" />
+                </a>
+            </div>
+
+            <div class="zoom" style="height:100px;top:400px;">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img src="assets/img/bg/porco.png" height="80" top="10" style="right:250px" />
+                </a>
+            </div>
+            <!--<img src="assets/img/bg/masc2.png" />
+            <img src="assets/img/bg/picapau.png" />
+            <img src="assets/img/bg/porco.png" />
+            <img src="assets/img/bg/onca.png" />
+            <img src="assets/img/bg/masc3.png" />-->
+
+
+            <div class="header-scroll-wrapper" data-wow-delay="1">
+                <a href="#videos" class="mouse page-scroll"><div class="wheel"></div></a>
+            </div>
+        </header>
+
+        <section id="videos" class="single-page-section" style="width:1250px;height:800px;padding-top:5px;">
+            <div class="section-inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-lg-12 text-center mb100">
+                                <h2 class="section-heading">Vídeos</h2>
+                                <hr class="thin-hr">
+                                <div id="gallery3" style="margin:0px auto;display:none;">
+
+                                    <div data-type="vimeo"
+                                         data-title="Furla | Tiger"
+                                         data-description="furla tiger description"
+                                         data-thumb="http://i.vimeocdn.com/video/447294219_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/447294219_640.jpg"
+                                         data-videoid="73234449"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="The Mountain"
+                                         data-description="The Mountain description"
+                                         data-thumb="http://i.vimeocdn.com/video/145026168_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/145026168_640.jpg"
+                                         data-videoid="22439234"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="The City Limits"
+                                         data-description="The City Limits description"
+                                         data-thumb="http://i.vimeocdn.com/video/359456864_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/359456864_640.jpg"
+                                         data-videoid="23237102"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="Landscapes: Volume Two"
+                                         data-description="Landscapes: Volume Two description"
+                                         data-thumb="http://i.vimeocdn.com/video/487882964_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/487882964_640.jpg"
+                                         data-videoid="29950141"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="AFTERGLOW - Lightsuit Segment"
+                                         data-description="AFTERGLOW - Lightsuit Segment description"
+                                         data-thumb="http://i.vimeocdn.com/video/492928158_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/492928158_640.jpg"
+                                         data-videoid="108679294"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="Birds on the Wires"
+                                         data-description="Birds on the Wires descrition"
+                                         data-thumb="http://i.vimeocdn.com/video/24171751_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/24171751_640.jpg"
+                                         data-videoid="6428069"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="Alma"
+                                         data-description="Alma - description"
+                                         data-thumb="http://i.vimeocdn.com/video/12884280_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/12884280_640.jpg"
+                                         data-videoid="4749536"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="Into The Mind - Official Teaser"
+                                         data-description="Into The Mind - Official Teaser description"
+                                         data-thumb="http://i.vimeocdn.com/video/376134405_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/376134405_640.jpg"
+                                         data-videoid="54348266"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="JP Auclair Street Segment"
+                                         data-description="JP Auclair Street Segment description"
+                                         data-thumb="http://i.vimeocdn.com/video/222683377_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/222683377_640.jpg"
+                                         data-videoid="32863936"></div>
+
+
+                                    <div data-type="vimeo"
+                                         data-title="HDR Video Demonstration"
+                                         data-description="HDR Video Demonstration description"
+                                         data-thumb="http://i.vimeocdn.com/video/88221410_200x150.jpg"
+                                         data-image="http://i.vimeocdn.com/video/88221410_640.jpg"
+                                         data-videoid="14821961"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </section>
+        <section id="imagens" class="single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-lg-12 text-center mb100">
+                                <h2 class="section-heading" style="color:white">Imagens</h2>
+
+                                <div id="gallery" style="display:none;">
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Lemon Slice"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-1.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-1.jpg"
+                                             data-description="This is a Lemon Slice"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Peppers"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-2.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-2.jpg"
+                                             data-description="Those are peppers"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Keys"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-3.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-3.jpg"
+                                             data-description="Those are keys"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Friuts in cup"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-4.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-4.jpg"
+                                             data-description="Those are friuts in a cup"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Yellow Flowers"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-5.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-5.jpg"
+                                             data-description="Those are yellow flowers"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-6.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-6.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-7.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-7.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>   <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-8.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-8.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>   <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/RB/IMG-9.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/RB/IMG-9.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>   <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0120.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0120.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0227.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0227.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0659.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-0659.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-1027.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-1027.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-1830.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-1830.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-9982.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-9982.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-9993.jpg"
+                                             data-image="assets/unitegallery-master/package/images/imagens/Malunny/Carnaval das Aguas_ Mila Maluhy-9993.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </section>
+        <section id="pinturas" class="single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-lg-12 text-center mb100">
+                                <h2 class="section-heading">Pinturas</h2>
+                                <hr class="thin-hr">
+                                <div id="gallery2" style="display:none;">
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Lemon Slice"
+                                             src="assets/unitegallery-master/package/images/Pinturas/19570971.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/19570971.jpg"
+                                             data-description="This is a Lemon Slice"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Peppers"
+                                             src="assets/unitegallery-master/package/images/Pinturas/19570974.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/19570974.jpg"
+                                             data-description="Those are peppers"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Keys"
+                                             src="assets/unitegallery-master/package/images/Pinturas/2020-02-18 12.58.47 1.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/2020-02-18 12.58.47 1.jpg"
+                                             data-description="Those are keys"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Friuts in cup"
+                                             src="assets/unitegallery-master/package/images/Pinturas/2020-02-21 03.02.36 1pg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/2020-02-21 03.02.36 1.jpg"
+                                             data-description="Those are friuts in a cup"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Yellow Flowers"
+                                             src="assets/unitegallery-master/package/images/Pinturas/2020-02-21 03.02.38 1.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/2020-02-21 03.02.38 1.jpg"
+                                             data-description="Those are yellow flowers"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Butterfly"
+                                             src="assets/unitegallery-master/package/images/Pinturas/doc01982920200218114930_001.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/doc01982920200218114930_001.jpg"
+                                             data-description="This is butterfly"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Boat"
+                                             src="assets/unitegallery-master/package/images/Pinturas/doc01983020200218114953_001.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/doc01983020200218114953_001.jpg"
+                                             data-description="This is a boat"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Woman"
+                                             src="assets/unitegallery-master/package/images/Pinturas/doc01983120200218115106_001.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/doc01983120200218115106_001.jpg"
+                                             data-description="This is a woman"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Cup Of Coffee"
+                                             src="assets/unitegallery-master/package/images/Pinturas/doc01983220200218115134_001.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/doc01983220200218115134_001.jpg"
+                                             data-description="This is cup of coffee"
+                                             style="display:none">
+                                    </a>
+
+                                    <a href="http://unitegallery.net">
+                                        <img alt="Iphone Back"
+                                             src="assets/unitegallery-master/package/images/Pinturas/doc01983320200218115156_001.jpg"
+                                             data-image="assets/unitegallery-master/package/images/Pinturas/doc01983320200218115156_001.jpg"
+                                             data-description="This is iphone back"
+                                             style="display:none">
+                                    </a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </section>
+        <section id="podcasts" class="single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-lg-12 text-center mb100">
+                                <h2 class="section-heading" style="color:white">Podcasts</h2>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="virtual" class="single-page-section" style="width:1250px;height:800px;">
+
+            <div class="section-inner" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center" style="color:white">
+                            <h2 class="section-heading"><span class="theme-accent-color"></span>Tour Virtual</h2>
+
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 with-hover-text">
+                    <p><a target="_parent" href="vr-ram-gh-pages/index_foto.html"><img width="100" height="100" src="assets/img/augmentedreality-14_111386.png" alt="Remove this image" /></a></p>
+                    <span class="hover-text font-semibold">Fotos 360°</span>
+                </div>
+                <!-- /col12 -->
+                <div class="col-md-6 with-hover-text">
+                    <p><a target="_parent" href="vr-ram-gh-pages/index_video.html"><img width="100" height="100" src="assets/img/augmentedreality-16_111370.png" alt="Remove this image" /></a></p>
+                    <span class="hover-text font-light ">Videos 360°</span>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="sobre" class="single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-lg-12 text-center mb100">
+                                <h2 class="section-heading">Sobre</h2>
+                                <hr class="thin-hr">
+                                <p class="lead text-justify">
+                                    O projeto “Mapa do Carnaval das Águas” é coordenado pela professora mestra Viviane Menna Barreto. Em 2003 acompanhando o projeto IFNOPAP da UFPA ela visitou pela primeira vez Cametá, conheceu Mestre Zenóbio criador do cordão da Bicharada e firmou uma parceria que já dura 17 anos. Em 2005 mudou-se para o Pará e como artista viajante começou a seguir o itinerário das festas populares do estado.  Iniciou a produção de pinturas, entrevistas e pesquisas sobre o carnaval e orientada pela Dra. Jerusa Pires Ferreira transformou essa experiência em dissertação de mestrado defendida na Comunicação e Semiótica da PUC SP.  Na última década o projeto virou a extensão “Cartografias Amazônicas” e uma centena de estudantes de comunicação foi praticar seu oficio pelo interior do Pará criando narrativas em múltiplas plataformas sobre festas tradicionais e seus festeiros. A equipe reunida neste projeto de cartografia cultural está junta desde os tempos da universidade. Se formaram e se tornaram profissionais apaixonados pela Amazônia e pela cultura de seu povo.
+                                    </p>
+
+</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--<section id="podcast" class="opaqued parallax fullheight mt30 single-page-section" data-parallax="scroll" data-speed="0.8">
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center mb100">
+                            <h2 class="section-heading"><span class="theme-accent-color">Podcasts</span></h2>
+                            <hr class="thin-hr">
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="container">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="icon-box-1 match-height mb30">
+
+                                        <div class="content-area">
+                                            <iframe src="https://open.spotify.com/embed-podcast/show/7w2wmS5tdwLBMtEN3puAxn" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="icon-box-1 match-height mb30">
+
+                                        <div class="content-area">
+                                            <iframe src="https://open.spotify.com/embed-podcast/show/7w2wmS5tdwLBMtEN3puAxn" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="icon-box-1 match-height mb30">
+
+                                        <div class="content-area">
+                                            <iframe src="https://open.spotify.com/embed-podcast/show/7w2wmS5tdwLBMtEN3puAxn" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>-->
+
+        <section id="contatos" class="white-bg single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-left mb100" style="color:white">
+                            <h2 class="section-heading"><span class="theme-accent-color"></span>Contatos</h2>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section id="links" class="white-bg single-page-section" style="width:1250px;height:800px;">
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center mb100" style="color:white;padding-left:500px;padding-top:30px">
+                            <h2 class="section-heading"><span class="theme-accent-color"></span>Links</h2>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <!--<footer class="white-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
+                        <span class="copyright">Copyright 2019. Desenvolvido por NaCuia Produtora</span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ul class="list-inline social-links wow fadeIn" data-wow-delay="0.2s">
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>-->
+        <div id="single-pager-navigation-wrapper"></div>
+        <div id="bottom-frame"></div>
+        <a href="#" id="back-to-top"><i class="fa fa-long-arrow-up"></i></a>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    O Mapa do Carnaval das Águas tem como objetivo reunir e deixar mais acessível pesquisas e contatos com as comunidades produtoras do carnaval amazônico. Por meio de narrativas registradas em filmes, ilustrações, dissertações, Podcast e fotografias buscaram trazer representações dessa cultura.
+                    Na construção do mapa seguimos o itinerário das apresentações dos cordões e blocos carnavalescos de Cametá e Mocajuba ocorridas em fevereiro de 2020. Então não consideramos esse como um registro completo. Apenas um instantâneo deste encontro.
+                    Esta plataforma pretende facilitar a criação e difusão de redes imagéticas e mostrar um pouco da visualidade e do imaginário dos ribeirinhos que vivem nas margens do rio Tocantins nas ilhas do estado do Pará.
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+    <script src="assets/js/imagens.js"></script>
+    <script src="assets/360gallery-gh-pages/components/set-image.js"></script>
+    <script src="assets/360gallery-gh-pages/components/update-raycaster.js"></script>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="assets/jQuery-Plugin-For-Image-Hover-Preview-With-Caption-Support-imagepreview/imagepreview.min.js"></script>
+    <script src="assets/jQuery-Plugin-For-Image-Hover-Preview-With-Caption-Support-imagepreview/imagepreview.js"></script>
+    <script src="assets/unitegallery-master/package/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js"></script>
+    <script src="assets/unitegallery-master/package/unitegallery/js/unitegallery.js"></script>
+    <script src="assets/unitegallery-master/package/unitegallery/js/unitegallery.min.js"></script>
+    <script src="assets/unitegallery-master/package/unitegallery/themes/carousel/ug-theme-carousel.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            'use strict';
+            jQuery('#headerwrap').backstretch([
+                "assets/img/bg/mapa.jpg"
+
+            ], { duration: 8000, fade: 500 });
+        });
+
+
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#thumbnail img").hover(function (e) {
+                $("#large").css("top", (e.pageY + 5) + "px")
+                    .css("left", (e.pageX + 5) + "px")
+                    .html("<img src=" + $(this).attr("alt") + " alt='Large Image' /><br/>" + $(this).attr("rel"))
+                    .fadeIn("slow");
+            }, function () {
+                $("#large").fadeOut("fast");
+            });
+
+        });
+    </script>
+     <script type="text/javascript">
+      $('.preview').anarchytip();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            jQuery("#gallery").unitegallery({
+                gallery_theme: "tilesgrid"
+
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            jQuery("#gallery2").unitegallery({
+                gallery_theme: "carousel"
+            });
+
+
+        });
+
+        $(document).ready(function () {
+
+            jQuery("#gallery3").unitegallery({
+                gallery_theme: "carousel"
+            });
+
+
+        });
+
+
+
+    </script>
+
+</body>
+</html>

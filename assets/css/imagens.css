@@ -1,0 +1,154 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.grid {
+    margin: 0 auto;
+    padding: 10px;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+.grid-item {
+    width: 180px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    opacity: 0;
+}
+
+    .grid-item.is-visible {
+        animation: Items .6s ease-in forwards;
+    }
+
+@keyframes Items {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.3) rotateY(90deg);
+        transform: scale(0.3) rotateY(90deg);
+    }
+
+    60% {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+    }
+
+    90% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fancybox {
+    display: block;
+    width: 100%;
+    height: 100%;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all .5s;
+}
+
+.grid-item:hover .fancybox {
+    transform: scale(1.1);
+}
+
+.grid-item:nth-child(1) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-1.png);
+}
+
+.grid-item:nth-child(2) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-2.png);
+}
+
+.grid-item:nth-child(3) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-3.png);
+}
+
+.grid-item:nth-child(4) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-4.png);
+}
+
+.grid-item:nth-child(5) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-5.png);
+}
+
+.grid-item:nth-child(6) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-6.png);
+}
+
+.grid-item:nth-child(7) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-7.png);
+}
+
+.grid-item:nth-child(8) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-8.png);
+}
+
+.grid-item:nth-child(9) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-9.png);
+}
+
+.grid-item:nth-child(10) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-10.png);
+}
+
+.grid-item:nth-child(11) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-11.png);
+}
+
+.grid-item:nth-child(12) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-12.png);
+}
+
+.grid-item:nth-child(13) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-13.png);
+}
+
+.grid-item:nth-child(14) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-14.png);
+}
+
+.grid-item:nth-child(15) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-15.png);
+}
+
+.grid-item:nth-child(16) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-16.png);
+}
+
+.grid-item:nth-child(17) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-17.png);
+}
+
+.grid-item:nth-child(18) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-18.png);
+}
+
+.grid-item:nth-child(19) .fancybox {
+    background-image: url(http://poiemaweb.com/assets/images/dribbble-19.png);
+}
+
+.grid-item:nth-child(4n-5) {
+    height: 50px;
+}
+
+.grid-item:nth-child(2n) {
+    height: 300px;
+}
+
+.grid-item:nth-child(3n) {
+    height: 120px;
+}

@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>Experience Virtual Reality</title>
+    <meta name="description" content="VR">
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+    <script src="components/set-image.js"></script>
+    <script src="components/update-raycaster.js"></script>
+    <style type="text/css">
+        a-scene {
+            height: 600px;
+            width: 800px;
+        }
+    </style>
+</head>
+    <body>
+        <a-scene embedded>
+            <a-assets>
+                <img id="panorama" src="assets/panorama-background.jpg">
+                <img id="panorama-demo" src="assets/panorama.png">
+                <img id="lyrics-demo" src="assets/lyrics.png">
+            </a-assets>
+
+            <a-entity>
+                <a-entity camera look-controls wasd-controls>
+                    <a-entity position="0 0 -3" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.20; radiusInner: 0.13;" material="color: #ADD8E6; shader: flat" cursor="maxDistance: 30; fuse: true">
+                        <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                        <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+                    </a-entity>
+                </a-entity>
+            </a-entity>
+
+         
+
+            <a-curvedimage id="pana" src="#panorama-demo" transparent="true" 
+              height="2" radius="3" theta-length="40" rotation="0 190 0" position="0 0 -2">
+            </a-curvedimage>
+            
+            <a-curvedimage id="lyrics" src="#lyrics-demo" transparent="true" 
+              height="2" radius="3" theta-length="40" rotation="0  130 0" position="0 0 -2">
+            </a-curvedimage>
+            
+           
+
+          <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
+          <a-light type="ambient" color="#fff"></a-light>
+          <a-sky color="rgb(200,200,200)" opacity="0.5"></a-sky>
+        </a-scene>
+        <script>
+            AFRAME.registerComponent('auto-enter-vr', {
+             init: function () {
+              this.el.sceneEl.enterVR();
+             }
+            });
+            
+            document.querySelector("#pana").addEventListener('click', function() {
+                window.location.href = "demos/video/index_video_1.html";
+            });
+            document.querySelector("#lyrics").addEventListener('click', function() {
+                window.location.href = "demos/video/index_video_2.html";
+            });
+           
+        </script>
+    </body>
+</html>
